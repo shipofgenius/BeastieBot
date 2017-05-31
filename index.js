@@ -11,6 +11,7 @@
 const _ = require("lodash");
 const beastieFunctions = require("./beastie-functions");
 const queue = require("./message-queue");
+require("./http/server.js");
 
 // Setup Files
 const tmi = require("tmi.js");

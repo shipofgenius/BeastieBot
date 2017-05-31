@@ -33,6 +33,10 @@ QUOTE_TIMER_ENABLED  : true,            // Random quote timer
 RULES_TIMER_ENABLED  : true,            //
 
 // LOGS
-LOG_LEVEL    : 7          // 0:off 1:chat 2:server 3:client
+LOG_LEVEL    : 5,                       // 0:off 1:chat 2:server 3:client
+
+//HTTP server
+PORT : 8010,                            // Port the server is running on
+HOST : '127.0.0.1'                      // Keep this local unless being used as a remote overlay
 
 };

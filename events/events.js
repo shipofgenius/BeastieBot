@@ -29,9 +29,9 @@ const constants = require("../config/constants.js");
 
 // GREETING - Beastie says hello when connecting to chat room - Turn on/off in ../config/constants.js
 module.exports.join = function(channel, username, self){
+    if (!constants.AWOKE) return;
     if(self){
-        
-        if (!constants.AWOKE) return;
+           
          //do not leave message when joining other channels
         if(channel != beastie.getChannels()[0]) return;
         
@@ -45,6 +45,7 @@ module.exports.join = function(channel, username, self){
 
 // GOODBYE - Beastie says goodbye when his node.js process ends
 module.exports.part = function(){
+    if (!constants.GOODBYE) return;
     for( var hoster = 0; hoster < host.ourHosts.length; hoster++ ){
             beastie.say( beastie.getChannels()[0], "Thank you for hosting our stream to " + host.ourHosts[hoster][1] + " today " + host.ourHosts[hoster][0] + "! Check out our friend: twitch.tv/" + host.ourHosts[hoster][0]);
     }
@@ -61,6 +62,7 @@ module.exports.part = function(){
 
 // GET-HOSTED - Beastie automatically thanks and shouts out hosts
 module.exports.hosted = function(channel, username, viewers){
+    if (!constants.GET_HOSTED) return;
     if(viewers >= 3){
         queue.addMessage(channel, username + " has hosted us to " + viewers + " viewers! Thank you ʕ•ᴥ•ʔ rawr!! Let's go check out their awesome channel: twitch.tv/" + username + "!");
         host.ourHosts.push([username, viewers]);
@@ -70,6 +72,7 @@ module.exports.hosted = function(channel, username, viewers){
 
 // NEW-FOLLOWER - Beastie welcomes new follower and hands out Revlo points
 module.exports.newFollow = function(follower){
+    if (!constants.NEW_FOLLOW) return;
     console.log("We have a new follower! " + follower);
     beastie.say(beastie.getChannels()[0], "Welcome to the team " + follower + "! :D");
 };
